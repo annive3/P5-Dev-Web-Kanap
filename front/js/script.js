@@ -1,29 +1,34 @@
-fetch('http://localhost:3000/api/products')
-    .then(function(response){
-        if(response.ok === true){
-             return response.json();
-        }
-    })
-    .then(function(values){
-        let affichage = '';
-        for (let items of values) {
-            affichage += ` <a href="./product.html?${items._id}">
-            <article>
-              <img src= ${items.imageUrl} alt= ${items.altTxt}>
-              <h3 class="productName">${items.name}</h3>
-              <p class="productDescription">${items.description}</p>
-            </article>
-          </a> `;
-          
-        }  
-        document.querySelector("#items").innerHTML = affichage;
-        
-    })
-    .catch(function(err){
-        // Une erreur est survenue
-        console.log(err)
-    });
 
-    
+document.addEventListener("DOMContentLoaded", ()=>{
+
+        fetchData('http://localhost:3000/api/products').then((response)=>{
+
+                 if(response.message === "Erreur données"){
+
+                       return alert("Erreur lors de la récupération des données.");
+
+                 }
+
+                 let htmlToDisplay = "";
+
+                 for(kanap of response.data){
+
+                      htmlToDisplay += ` 
+                        <a href="./product.html?id=${kanap._id}">
+                            <article>
+                              <img src= ${kanap.imageUrl} alt= ${kanap.altTxt}>
+                              <h3 class="productName">${kanap.name}</h3>
+                              <p class="productDescription">${kanap.description}</p>
+                            </article>
+                        </a> `;                          
+
+                    }
+
+                document.querySelector("#items").innerHTML = htmlToDisplay;
 
 
+        })
+
+});
+
+  
