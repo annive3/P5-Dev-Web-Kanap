@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
    urlId = urlId.get("id");
 
-   console.log(urlId);
-
    fetchData(`http://localhost:3000/api/products/${urlId}`).then((response)=>{
 
         if(response.message === "Erreur données"){
@@ -19,15 +17,31 @@ document.addEventListener("DOMContentLoaded",()=>{
             return alert("Erreur lors de la récupération des données.");
 
         }
-
-            console.log(response.message);
-
         // Ici tu affiches les informations du produit dans la page product.html
 
-        let productsDescriptionHtmlToDisplay = `<img src="${imageUrl}" alt="${altTxt}"> `;
+        document.querySelector(".item__img").innerHTML = `<img src=${response?.data?.imageUrl} alt=${response?.data?.altTxt} />`;
+       
+        document.querySelector("#title").innerHTML = response?.data?.name;
 
-        document.querySelector("#item__img").innerHTML = productsDescriptionHtmlToDisplay;
-           console.log(response.data);
+        document.querySelector("#price").innerHTML = response?.data?.price;
+
+        document.querySelector("#description").innerHTML = response?.data?.description;
+
+        const colors = response?.data?.colors;
+
+        let colorsHTML;
+
+        for(color of colors){
+
+              colorsHTML += `
+              
+                  <option value=${color}>${color}</option>;
+              
+              `;
+
+        }
+
+        document.querySelector("#colors").insertAdjacentHTML("beforeend", colorsHTML);
    });
 
 });
