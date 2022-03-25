@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                               <h3 class="productName">${kanap.name}</h3>
                               <p class="productDescription">${kanap.description}</p>
                             </article>
-                        </a> `;                          
+                        </a> `;     
 
                     }
 
