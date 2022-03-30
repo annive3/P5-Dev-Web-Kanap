@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded",()=>{
 
         document.querySelector(".item__img").innerHTML = `<img src=${response?.data?.imageUrl} alt=${response?.data?.altTxt} />`;
        
-        document.querySelector("#title").innerHTML = response?.data?.name;
+        document.querySelector("#title").textContent = response?.data?.name;
 
-        document.querySelector("#price").innerHTML = response?.data?.price;
+        document.querySelector("#price").textContent = response?.data?.price;
 
-        document.querySelector("#description").innerHTML = response?.data?.description;
+        document.querySelector("#description").textContent = response?.data?.description;
 
         const colors = response?.data?.colors;
 
@@ -44,4 +44,30 @@ document.addEventListener("DOMContentLoaded",()=>{
         document.querySelector("#colors").insertAdjacentHTML("beforeend", colorsHTML);
    });
 
+
+
+   
+// // *************************
+
+// const local = JSON.parse(localStorage.getItem("cart"));
+// if (local != null) {
+
+//     console.log(local);
+// }
+
+// addToCart.onclick = () => {
+// let cart = {
+//     quantity: quantity.value,
+//     colors: colors.value
+// };
+// localStorage.setItem("cart", JSON.stringify(cart))
+
+// }
+
+
+
 });
+
+
+
+
