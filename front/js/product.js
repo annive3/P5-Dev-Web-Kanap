@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded",()=>{
    });
 
 
-   // Cette fonction ajoute un produite au panier.
+   // Cette fonction ajoute un produit au panier.
 
    function addProductToBasket(product){
 
